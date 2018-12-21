@@ -1,0 +1,18 @@
+<div class="ui main text container">
+  <h4>New Theater</h4>
+  <div class="ui form">
+      <div class="field">
+          <label>Name of Theater</label>
+          <input type="text" [(ngModel)]="newTheater.name" name="theater[name]" placeholder="Name">
+      </div>
+      <div class="field">
+          <label>Row</label>
+          <input type="text" [(ngModel)]="newTheater.rows" name="theater[rows]" placeholder="row">
+      </div>
+      <div class="field">
+          <label>Columans</label>
+          <input type="text" [(ngModel)]="newTheater.columans" name="theater[columans]" placeholder="columans">
+      </div>
+      <button type="button" class="btn btn-outline-light" (click)=createTheater()>Create theater</button>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="ui container">
+    <div class="ui inverted segment" *ngIf="movie">
+        <div class="ui huge header">New Movie</div>
+        <form class="ui inverted form">
+            <div class="field">
+                <label>Name of Movie</label>
+                <input type="text" [(ngModel)]="movie.title" name="movie[name]">
+            </div>
+            <div class="field">
+                <label>Image</label>
+                <input type="text" [(ngModel)]="movie.image" name="movie[image]">
+            </div>
+            <div class="field">
+                <label>Director</label>
+                <input type="text" [(ngModel)]="movie.director" name="movie[director]">
+            </div>
+            <div class="field">
+                <label>Movie Description</label>
+                <textarea name="movie[description]" [(ngModel)]="movie.description"></textarea>
+            </div>
+            <button type="button" (click)="editMovie()" class="ui inverted blue button">Save</button>
+            <button type="button" (click)='deleteMovie()' class="ui inverted red button">Delete Movie</button>
+        </form>
+    </div>
+</div>

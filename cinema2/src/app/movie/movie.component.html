@@ -1,0 +1,41 @@
+<div class="container" *ngIf="movie">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 style="padding-bottom: 1em; padding-top: 1em;">{{movie.title}}</h2>
+    </div>
+  </div>
+  <div class="row">  
+    <div class="col-md-6">
+      <img src="{{movie.image}}" style="max-width: 100%;" class="img-thumbnail">
+    </div>
+    <div class="col-md-6">
+      <p>{{movie.description}}</p>
+      <p><strong>Director: {{movie.director}}</strong></p>
+      
+    <!--  -->
+    <div *ngIf="movieShowsSchedule?.length > 0">
+      <h5>Order tickets:</h5>
+      <!-- Adding the active class to the selectedDate. see: angular conditional class https://stackoverflow.com/questions/35269179/angular-conditional-class-with-ngclass -->
+      <div *ngIf="movieShowsSchedule" style="list-style-type: none;">
+        <button class="ui inverted yellow button" style="margin: 5px;"
+          *ngFor="let date of movieShowsSchedule"
+          (click)="showHours(getDateKey(date)[0])"
+          [class.active]="selectedDate == getDateKey(date)[0]">
+          {{getDateKey(date)[1]}}
+        </button>
+      </div>
+
+      <div *ngIf="movieHourList">
+        <button type="button" style="margin: 5px;"
+          *ngFor="let date of movieHourList"
+          value="{{getTimeKey(date)[1]}}"
+          (click)="chooseSeats(getTimeKey(date)[1])"
+          class="ui inverted green button">{{getTimeKey(date)[0]}}
+        </button>
+      </div>
+    <!--  -->
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,40 @@
+<p>
+  show-new works!
+</p>
+
+<div class="container">
+  <div class="ui two column centered grid">
+    <div class="column">
+      <div class="ui inverted segment">
+        <div class="ui inverted form">
+          <h4>Add new Show:</h4>
+          <div class="two fields">
+            <div class="field">
+              <label for="selectMovie">Movie:</label>
+              <select id="selectMovie" [(ngModel)]="newShow.movieId" style="display: inline;">
+                <option value="">select Movie</option>
+                <option *ngFor="let movie of movieList | async" value="{{movie._id}}">{{movie.title}}</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="selectTheater">Theater:</label>
+              <select id="selectTheater" [(ngModel)]="newShow.theaterId" style="display: inline;">
+                <option value="">select theater</option>
+                <option *ngFor="let theater of theaterList | async" value="{{theater._id}}">{{theater.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="showDate">Show Date:</label>
+            <input type="date" class="form-control" [(ngModel)]="date" id="showDate">
+          </div>
+          <div class="field">
+            <label for="showDate">Show Hour:</label>
+            <input type="time" class="form-control" [(ngModel)]="time" id="showTime">
+          </div>
+          <button style="margin-bottom: 15px" type="submit" (click)="createShow()" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

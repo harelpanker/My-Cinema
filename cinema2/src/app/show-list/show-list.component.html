@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row" style="padding-top: 2%; padding-bottom: 3%;">
+    <button type="button" class="ui inverted blue button" [routerLink]="['/show/new']">Add new Shows</button>
+  </div>
+  <div class="row">
+      <div class="col-4" *ngFor="let show of shows | async" style="padding: 2%">
+        <p><strong>Date time: </strong>{{show.dateTime}}</p>
+        <p><strong>Movie Id: </strong>{{show.movieData[0].title}}</p>
+        <p><strong>Theater Id: </strong> {{show.theaterData[0].name}}</p>
+        <button (click)="deleteShow()" type="button" class="ui inverted button">Delete Show</button>
+      </div>
+  </div>
+</div>

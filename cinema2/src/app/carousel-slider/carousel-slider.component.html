@@ -1,0 +1,110 @@
+<!-- Carousel -->
+  <div class="container" style="padding-bottom: 3%;">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 style="padding-top: 3%; padding-bottom: 3%;">Top 3 Movies:</h2>
+          </div>
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" >
+            <div class="carousel-item active" *ngFor="let movie of movies | async; let isFirst = first" [class.active]="isFirst">
+              <a [routerLink]="['/movies',movie._id]">
+                <img class="d-block w-100 rounded" src="{{movie.movieDetails.image}}" alt="First slide">
+              </a>
+            </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+<!-- Quick Order -->
+
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 style="padding-top: 3%; padding-bottom: 1%;">Quick Order:</h2>
+        </div>
+      </div>
+      <div class="ui form inverted segment">
+        <div class="form-group">
+          <label>Movie:</label>
+          <select (change)='onChangeMovie()' [(ngModel)]="selectedMovie" class="ui search dropdown" style="display: inline;">
+            <option value="">Movie</option>
+            <option *ngFor="let movie of movieList | async"
+              value="{{movie._id}}">{{movie.title}}
+            </option>
+          </select>
+        </div>
+
+        <div class="ui inverted divider"></div>
+
+        <div class="form-group">
+          <label>Date:</label>
+          <select (change)='onChangeDate()' [(ngModel)]="selectedDate" class="ui search dropdown" style="display: inline;">
+            <option value="">Date</option>
+            <option *ngFor="let date of movieShowsSchedule | async"
+              value="{{getDateKey(date)[0]}}">{{getDateKey(date)[1]}}
+            </option>
+          </select>
+        </div>
+
+        <div class="ui inverted divider"></div>
+
+        <div class="form-group">
+          <label>Time:</label>
+          <select [(ngModel)]="selectedShowId" (change)="onChangeSelectTime()" class="ui search dropdown" style="display: inline;">
+            <option value="">Time</option>
+            <option *ngFor="let time of movieHourList"
+            value="{{getTimeKey(time)[1]}}">{{getTimeKey(time)[0]}}
+            </option>
+          </select>
+        </div>
+
+        <div class="ui inverted divider"></div>
+
+        <button class="ui inverted blue button" (click)="quickOrderClick()">
+          Choose Seats
+        </button>
+      </div>
+
+<!-- Search -->
+
+      <div class="col-sm-12">
+        <h2>Search:</h2>
+      </div>
+      <div class="ui inverted segment">
+        <div class="ui inverted transparent fluid icon input">
+          <input [(ngModel)]="userFilter" type="text" placeholder="Search Movie...">
+          <i class="search icon"></i>
+        </div>
+          <table *ngIf="userFilter">
+            <thead>
+              <tr></tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let movie of movieList | async | filterBy: {'title':userFilter}">
+                <a [routerLink]="['/movies',movie._id]" style="text-decoration: none;">
+                  <td style="color: white;">{{movie.title}}</td>
+                  <td><img src="{{movie.image}}" style="max-height: 20px; padding-left: 5px;"></td>
+                </a>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>

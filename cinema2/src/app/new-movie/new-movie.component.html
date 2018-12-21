@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="ui three column grid">
+        <div class="row">
+            <div class="col-4" *ngFor="let movie of movies | async">
+                <h4>{{movie.title}}</h4>
+                <img src="{{movie.image}}" class="img-fluid img-thumbnail">
+                <button style="margin-top: 5%;" type="button" class="btn btn-outline-warning" [routerLink]="['/movies/edit',movie._id]">
+                    Edit Me
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="ui container" style="padding-bottom: 3%;">
+    <div class="ui inverted segment">
+        <form class="ui inverted form">
+            <div class="ui huge header" style="color: white;">New Movie</div>
+            <div class="field">
+                <label>Name of Movie</label>
+                <input type="text" [(ngModel)]="newMovie.title" name="movie[name]" placeholder="Name">
+            </div>
+            <div class="field">
+                <label>Image</label>
+                <input type="text" [(ngModel)]="newMovie.image" name="movie[image]" placeholder="Image url">
+            </div>
+            <div class="field">
+                <label>Director</label>
+                <input type="text" [(ngModel)]="newMovie.director" name="movie[director]" placeholder="Director">
+            </div>
+            <div class="field">
+                <label>Movie Description</label>
+                <textarea name="movie[description]" [(ngModel)]="newMovie.description"></textarea>
+            </div>
+            <div class="field">
+                <button type="button" class="ui inverted green button" (click)=createMovie()>Create Movie</button>
+            </div>
+            <div class="field">
+                <button type="button" class="ui inverted grey button" [routerLink]="['/theater']">Theater</button>
+                <button type="button" class="ui inverted button" [routerLink]="['/shows']">Shows</button>
+            </div>
+        </form>
+    </div>
+</div>

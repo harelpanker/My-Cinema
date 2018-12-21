@@ -1,0 +1,63 @@
+<!-- Log In -->
+
+<div class="container">
+  <div class="row justify-content-center" style="padding-bottom: 3%; padding-top: 3%;">
+    <div class="col-sm-6">
+      <div class="ui inverted segment">
+        <div class="ui inverted form">
+          <h4 style="padding-bottom: 3%;">Log In:</h4>
+          <div class="two fields">
+            <div class="field">
+              <label>User Name</label>
+              <input placeholder="John Doe" type="text" required>
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <input placeholder="abcde" type="password" required>
+            </div>
+          </div>
+          <button class="ui inverted primary button">Log In</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Register -->
+
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <div class="ui inverted segment">
+        <div class="ui inverted form">
+          <h4 style="padding-bottom: 3%;">Register:</h4>
+          <div class="two fields">
+            <div class="field">
+              <label>First Name</label>
+              <input placeholder="John" type="text" required>
+            </div>
+            <div class="field">
+              <label>Fanily Name</label>
+              <input placeholder="Doe" type="password" required>
+            </div>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input placeholder="1234" type="password" min="4" required>
+          </div>
+          <div class="field">
+            <label>User Name</label>
+            <input placeholder="John Doe" type="text" required>
+          </div>
+          <button class="ui inverted primary button">Sign In</button>
+          <button type="button" class="btn btn-outline-warning" [routerLink]="['/login','newMovie']">
+            Admin add new Movie
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

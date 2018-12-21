@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+
+<body>
+    <form action="/profile" enctype="multipart/form-data" method="post">
+        <table>
+            <tr>
+                <td>Display name:</td>
+                <td>
+                    <input type="text" id="name" name="name" />
+                </td>
+            </tr>
+            <tr>
+                <td>Profile picture:</td>
+                <td>
+                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Register" />
+    </form>
+</body>
+
+</html>
